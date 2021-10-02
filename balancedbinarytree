@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//#5
+
+// Average case: when the tree is balanced
+// O(n) time | O(h) space - where n is the number of nodes in
+// the Binary Tree and h is the height of the Binary Tree
+// also O(h)~ O(logN) because balanced BTree
+
+class BinaryTree {
+public:
+	int data;
+	BinaryTree *left;
+	BinaryTree *right;
+	
+	BinaryTree(int data) {
+		this->data = data;
+		left = NULL;
+		right = NULL;
+	}
+};
+
+int nodeDepths(BinaryTree *root, int depth = 0) {
+	if (root == NULL)
+		return 0;
+	return depth + nodeDepths(root->left, depth + 1) +nodeDepths(root->right, depth + 1);
+}
